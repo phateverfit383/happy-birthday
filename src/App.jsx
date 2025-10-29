@@ -4,8 +4,8 @@ import photo1 from "../images/1.jpg";
 import photo2 from "../images/2.jpg";
 import photo3 from "../images/3.jpg";
 import photo4 from "../images/4.jpg";
-// import photo5 from "../images/5.jpg";
-// import photo6 from "../images/6.jpg";
+import photo5 from "../images/5.png";
+import photo6 from "../images/6.jpg";
 
 // ------------------------------------------------------------
 // Birthday Surprise – single-file React page (JSX version)
@@ -140,16 +140,16 @@ const CakeAnimals = ({ images = [] }) => {
   // Zone anchors (percentages) relative to the cake wrapper (the parent with position:relative).
   // Top-Left, Top-Right, Mid-Left, Mid-Right, Bottom-Left, Bottom-Right
   const ZONES = [
-    { x: -120, y: -12 }, // TL
-    { x: 120, y: -12 }, // TR
-    { x: -95, y: 28 }, // ML
-    { x: 95, y: 28 }, // MR
-    { x: -75, y: 78 }, // BL
+    { x: 85, y: 65 }, // TL
+    { x: 17, y: 48 }, // TR
+    { x: 15, y: 28 }, // ML
+    { x: 80, y: 28 }, // MR
+    { x: 20, y: 78 }, // BL
     { x: 75, y: 78 }, // BR
   ];
 
   // jitter box size (% of parent width/height)
-  const JITTER = { x: 14, y: 12 };
+  const JITTER = { x: 1, y: 1 };
 
   const [tick, setTick] = useState(0);
   const [spots, setSpots] = useState(() =>
@@ -403,7 +403,7 @@ const DoorScene = ({ onEnter, opened }) => {
             </motion.div>
             <div className="absolute inset-x-0 bottom-6 text-center">
               <div className="text-2xl font-semibold text-rose-600 drop-shadow">
-                Gõ cửa để vào bữa tiệc 🎉 – Click the door
+                Click the door
               </div>
             </div>
           </div>
@@ -427,10 +427,8 @@ export default function BirthdaySurprise() {
     photo2,
     photo3,
     photo4,
-    photo1,
-    photo2,
-    photo3,
-    photo4,
+    photo5,
+    photo6,
   ]);
 
   // Ambient confetti toggle
@@ -497,8 +495,14 @@ export default function BirthdaySurprise() {
             </h2>
             <div className="relative mx-auto w-fit">
               <Cake lit={candlesLit} onBlow={handleBlowCandles} />
-              <CakeAnimals images={cakeImages} />
             </div>
+          </section>
+        )}
+
+        {/* Scene 2: Cake with surrounding animals (photos) */}
+        {stage === "cake" && (
+          <section className="w-full h-full">
+            <CakeAnimals images={cakeImages} />
           </section>
         )}
 
